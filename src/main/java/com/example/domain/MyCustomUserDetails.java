@@ -6,11 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public class LoginUser implements UserDetails {
+public class MyCustomUserDetails implements UserDetails {
 
     private final User user;
 
-    public LoginUser(User user) {
+    public MyCustomUserDetails(User user) {
         this.user = user;
     }
 
@@ -47,5 +47,9 @@ public class LoginUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

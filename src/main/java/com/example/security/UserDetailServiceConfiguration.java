@@ -1,10 +1,13 @@
 package com.example.security;
 
 import com.example.repository.UserRepository;
+import com.example.service.UserDetailsManagerImplementation;
 import com.example.service.UserDetailsServiceImplementation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
 
 @Configuration
 public class UserDetailServiceConfiguration {
@@ -30,8 +33,14 @@ public class UserDetailServiceConfiguration {
 //        return inMemoryUserDetailsManager;
 //    }
 
+//    @Bean
+//    public UserDetailsService userDetailsService(UserRepository userRepository) {
+//        return new UserDetailsServiceImplementation(userRepository);
+//    }
+
     @Bean
-    public UserDetailsService userDetailsService(UserRepository userRepository) {
-        return new UserDetailsServiceImplementation(userRepository);
+    public UserDetailsManager userDetailsManager(UserRepository userRepository,
+                                                 PasswordEncoder passwordEncoder) {
+        return new UserDetailsManagerImplementation(userRepository, passwordEncoder);
     }
 }
