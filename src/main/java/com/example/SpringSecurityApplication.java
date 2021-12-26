@@ -10,23 +10,23 @@ import org.springframework.context.event.EventListener;
 @SpringBootApplication
 public class SpringSecurityApplication {
 
-	private final UserService userService;
+	//private final UserService userService;
 
-	public SpringSecurityApplication(UserService userService) {
-		this.userService = userService;
-	}
+//	public SpringSecurityApplication(UserService userService) {
+//		this.userService = userService;
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringSecurityApplication.class, args);
 	}
 
 	@EventListener(ApplicationReadyEvent.class)
-	private void createDefaultUser() {
-		User user = new User();
-		user.setUsername("manish");
-		user.setPassword("admin");
-
-		userService.registerUser(user);
+	public void createDefaultUser() {
+//		User user = new User();
+//		user.setUsername("manish");
+//		user.setPassword("admin");
+//
+//		userService.registerUser(user);
 	}
 
 }
